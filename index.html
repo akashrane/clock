@@ -3,30 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist Countdown</title>
+    <title>Countdown Timer with Images</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="timer">
-            <div class="timer-segment">
-                <div id="days" class="timer-number">00</div>
-                <span class="timer-label">Days</span>
-            </div>
-            <div class="timer-segment">
-                <div id="hours" class="timer-number">00</div>
-                <span class="timer-label">Hours</span>
-            </div>
-            <div class="timer-segment">
-                <div id="minutes" class="timer-number">00</div>
-                <span class="timer-label">Minutes</span>
-            </div>
-            <div class="timer-segment">
-                <div id="seconds" class="timer-number">00</div>
-                <span class="timer-label">Seconds</span>
+    <!-- Heading -->
+    <div class="header-container">
+        <h1 class="heading">The Two Doba's Meet in</h1>
+        <div class="heart"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Left Image -->
+        <div class="image-container left">
+            <img src="assets\IMG_0277.jpg" alt="Left Image">
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="container">
+            <div class="timer">
+                <div class="timer-segment">
+                    <div id="days" class="timer-number">00</div>
+                    <span class="timer-label">Days</span>
+                </div>
+                <div class="timer-segment">
+                    <div id="hours" class="timer-number">00</div>
+                    <span class="timer-label">Hours</span>
+                </div>
+                <div class="timer-segment">
+                    <div id="minutes" class="timer-number">00</div>
+                    <span class="timer-label">Minutes</span>
+                </div>
+                <div class="timer-segment">
+                    <div id="seconds" class="timer-number">00</div>
+                    <span class="timer-label">Seconds</span>
+                </div>
             </div>
         </div>
+
+        <!-- Right Image -->
+        <div class="image-container right">
+            <img src="assets\PXL_20231225_024331768.jpg" alt="Right Image">
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

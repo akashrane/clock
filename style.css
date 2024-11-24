@@ -7,14 +7,15 @@
 body {
     height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     background: linear-gradient(135deg, #ffd7ba, #fef6e4, #ffe5d9);
-    background-size: 300% 300%; /* Smooth gradient animation */
+    background-size: 300% 300%;
     font-family: 'Poppins', sans-serif;
     color: #333;
     animation: gradientShift 8s ease infinite;
     overflow: hidden;
+    padding: 20px;
 }
 
 /* Gradient Background Animation */
@@ -24,16 +25,91 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Container Styling */
+/* Header Container */
+.header-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Heading Styling */
+.heading {
+    font-size: 4rem; /* Prominent heading */
+    color: #ff6f61;
+    font-weight: bold;
+    animation: fadeIn 1.5s ease;
+}
+
+/* Heart Styling */
+.heart {
+    width: 50px;
+    height: 50px;
+    background-color: #ff6f61;
+    position: relative;
+    transform: rotate(-45deg);
+    animation: heartbeat 1s infinite;
+    margin: 40px auto;
+}
+.heart:before,
+.heart:after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-color: #ff6f61;
+    border-radius: 50%;
+    position: absolute;
+}
+.heart:before {
+    top: -25px;
+    left: 0;
+}
+.heart:after {
+    left: 25px;
+    top: 0;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1) rotate(-45deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(-45deg);
+    }
+}
+
+/* Content Layout */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centers vertically */
+    flex-wrap: nowrap;
+    gap: 40px; /* Space between images and clock */
+    height: 100%; /* Ensures it takes up the full height */
+}
+
+/* Image Containers */
+.image-container {
+    flex: 0 0 auto; /* Ensures images don’t stretch */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-container img {
+    max-width: 150px; /* Keeps images small */
+    max-height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Countdown Timer Container */
 .container {
     text-align: center;
-    background: #fff; /* Clean white background */
-    border-radius: 20px;
-    padding: 40px 60px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    border: 3px solid #ffc2a1; /* Light coral border */
+    background: #fff;
+    border-radius: 50px;
+    padding: 50px 70px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 3px solid #ffc2a1;
     animation: fadeIn 1.5s ease;
-    width: fit-content;
 }
 
 /* Timer Styling */
@@ -41,8 +117,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px; /* Consistent spacing */
-    margin-top: 10px;
+    gap: 50px;
 }
 .timer-segment {
     display: flex;
@@ -50,35 +125,26 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Subtle hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .timer-segment:hover {
-    transform: translateY(-10px); /* Pop-out on hover */
-    box-shadow: 0px 5px 15px rgba(255, 99, 71, 0.3); /* Subtle hover glow */
+    transform: translateY(-5px);
+    box-shadow: 0px 3px 10px rgba(255, 99, 71, 0.3);
 }
 .timer-number {
-    font-size: 7rem; /* Larger numbers */
+    font-size: 7rem;
     font-weight: bold;
     background: linear-gradient(90deg, #ff9a8b, #ffc3a0);
     -webkit-background-clip: text;
-    color: transparent; /* Pastel gradient text */
-    text-shadow: 0 2px 5px rgba(255, 99, 71, 0.2);
+    color: transparent;
+    text-shadow: 0 1px 3px rgba(255, 99, 71, 0.2);
 }
 .timer-label {
-    font-size: 1.4rem; /* Larger labels */
-    color: #888; /* Subtle gray for labels */
-    margin-top: 10px;
+    font-size: 1.4rem;
+    color: #888;
+    margin-top: 5px;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-/* Floating Animation */
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-.timer {
-    animation: float 3s ease-in-out infinite; /* Subtle floating animation for the timer */
 }
 
 /* Fade-in Animation */
@@ -94,11 +160,16 @@ body {
 }
 
 /* Responsive Styling */
-@media (max-width: 500px) {
-    .timer-number {
-        font-size: 5rem; /* Adjust size for smaller screens */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column; /* Stacks the images and countdown on smaller screens */
+        gap: 20px;
     }
-    .timer-label {
-        font-size: 1rem;
+    .image-container img {
+        max-width: 100px; /* Smaller images for smaller screens */
+        max-height: 100px;
+    }
+    .timer-number {
+        font-size: 6rem; /* Adjust timer size */
     }
 }
