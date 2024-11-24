@@ -9,18 +9,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #000; /* Black background */
-    font-family: 'Inter', sans-serif;
-    color: #fff; /* White text for contrast */
+    background: linear-gradient(135deg, #ffd7ba, #fef6e4, #ffe5d9);
+    background-size: 300% 300%; /* Smooth gradient animation */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    animation: gradientShift 8s ease infinite;
+    overflow: hidden;
+}
+
+/* Gradient Background Animation */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Container Styling */
 .container {
     text-align: center;
-    background: #111; /* Slightly lighter black for contrast */
+    background: #fff; /* Clean white background */
     border-radius: 20px;
-    padding: 30px 40px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.8);
+    padding: 40px 60px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    border: 3px solid #ffc2a1; /* Light coral border */
+    animation: fadeIn 1.5s ease;
     width: fit-content;
 }
 
@@ -29,7 +41,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px; /* Increased gap for spacing */
+    gap: 40px; /* Consistent spacing */
+    margin-top: 10px;
 }
 .timer-segment {
     display: flex;
@@ -37,25 +50,53 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Subtle hover effect */
+}
+.timer-segment:hover {
+    transform: translateY(-10px); /* Pop-out on hover */
+    box-shadow: 0px 5px 15px rgba(255, 99, 71, 0.3); /* Subtle hover glow */
 }
 .timer-number {
-    font-size: 6rem; /* Larger font for numbers */
+    font-size: 7rem; /* Larger numbers */
     font-weight: bold;
-    color: #fff;
-    line-height: 1; /* Consistent line height for perfect vertical alignment */
+    background: linear-gradient(90deg, #ff9a8b, #ffc3a0);
+    -webkit-background-clip: text;
+    color: transparent; /* Pastel gradient text */
+    text-shadow: 0 2px 5px rgba(255, 99, 71, 0.2);
 }
 .timer-label {
-    font-size: 1.5rem; /* Larger labels */
+    font-size: 1.4rem; /* Larger labels */
     color: #888; /* Subtle gray for labels */
     margin-top: 10px;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.timer {
+    animation: float 3s ease-in-out infinite; /* Subtle floating animation for the timer */
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Styling */
 @media (max-width: 500px) {
     .timer-number {
-        font-size: 4rem; /* Adjust size for smaller screens */
+        font-size: 5rem; /* Adjust size for smaller screens */
     }
     .timer-label {
         font-size: 1rem;
